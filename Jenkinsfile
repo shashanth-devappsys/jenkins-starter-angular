@@ -3,15 +3,12 @@ pipeline {
         label "node"
     }
     stages {
-        stage("Git Pull") {
-            steps {
-                sh 'git pull origin dev'
-            }
-        }
-        stage("Build") {
+        stage("Install Dependencies") {
             steps {
                 sh 'npm install'
             }
+        }
+        stage("Build") {
             steps {
                 sh 'ng build --prod'
             }
