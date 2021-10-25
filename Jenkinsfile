@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+        githubPush()
+    }
     stages {
         stage("Install Dependencies") {
             steps {
@@ -8,7 +11,7 @@ pipeline {
         }
         stage("Build") {
             steps {
-                sh 'ng build --prod'
+                sh 'ng build'
             }
         }
     }
