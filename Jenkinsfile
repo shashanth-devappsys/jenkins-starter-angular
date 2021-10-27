@@ -21,7 +21,7 @@ pipeline {
                      // sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
                      sshPut remote: remote, from: env.WORKSPACE + '/dist/.', into: '/home/shashanth/jenkins-starter/'
                      sshCommand remote: remote, command: "cd /home/shashanth/jenkins-starter/"
-                     sshCommand remote: remote, command: "mv -r dist/* ."
+                     sshCommand remote: remote, command: "mv dist/* ."
                      sshCommand remote: remote, command: "rm -rf dist"
                 }
             }
