@@ -13,6 +13,7 @@ pipeline {
          stage("Clean workspace") {
             steps {
                 cleanWs()   // clean current workspace before build
+                checkout scm
             }
         }
         
