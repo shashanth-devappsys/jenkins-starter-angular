@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                      def remote = [name: 'dev-server', host: env.DEV_SERVER_HOST, user: env.DEV_SERVER_USER, password: env.DEV_SERVER_PASSWORD, port: 6410, allowAnyHosts: true]
-                     sshPut remote: remote, from: env.WORKSPACE + '/' + env.BUILD_TAG + '.tar.gz', into: '~/jenkins-starter/'
+                     sshPut remote: remote, from: env.WORKSPACE + '/' + env.BUILD_TAG + '.tar.gz', into: '/home/shashanth/jenkins-starter/'
                      sshCommand remote: remote, command: 'tar -xvzf ~/jenkins-starter/' + env.BUILD_TAG + '.tar.gz -C /var/www/jenkins-test/', failOnError: true
                     //  sshCommand remote: remote, command: "rm -rf /home/shashanth/jenkins-starter/dist"
                 }
