@@ -10,12 +10,12 @@ pipeline {
 
     stages {
 
-         stage("Clean workspace") {
+       /* stage("Clean workspace") {
             steps {
                 cleanWs()   // clean current workspace before build
                 checkout scm
             }
-        }
+        } */
         
         stage("Install Dependencies") {
             steps {
