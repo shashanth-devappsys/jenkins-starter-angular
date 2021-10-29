@@ -5,7 +5,7 @@ pipeline {
     }
 
      environment {
-        TAR_FILE_NAME = env.BUILD_TAG + '.tar.gz'
+        TAR_FILE_NAME = "${env.BUILD_TAG}.tar.gz"
     }
 
     stages {
