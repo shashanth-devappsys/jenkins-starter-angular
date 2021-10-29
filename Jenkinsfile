@@ -16,7 +16,7 @@ pipeline {
         }
         stage("Prepare zip file") {
             steps {
-                sh 'zip -r ' + env.BUILD_TAG + '.zip ' + env.WORKSPACE + '/dist'
+                sh 'tar cvzf ' + env.BUILD_TAG + '.tar.gz ' + env.WORKSPACE + '/dist'
             }
         }
         // stage('Deploy') {
