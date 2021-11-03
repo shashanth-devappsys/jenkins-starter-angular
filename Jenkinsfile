@@ -59,9 +59,9 @@ pipeline {
     }
     post {
         always {
-            mail body: "${env.PROJECT_NAME} - Build # ${env.$BUILD_NUMBER} - ${env.BUILD_STATUS} <br>Check console output at ${env.BUILD_URL} to view the results.",
+            mail body: "${env.JOB_NAME} - Build # ${env.$BUILD_NUMBER} - ${env.BUILD_STATUS} <br>Check console output at ${env.BUILD_URL} to view the results.",
             to: env.DEV_TEAM_MAIL,
-            subject: "${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}!" 
+            subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${BUILD_STATUS}!" 
         }
     }
 }
