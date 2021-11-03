@@ -60,13 +60,13 @@ pipeline {
     post {
         success{
             echo "Build Success"
-            emailext body: "Build ${env.BUILD_DISPLAY_NAME} Successful", 
+            mail body: "Build ${env.BUILD_DISPLAY_NAME} Successful", 
             to: env.DEV_TEAM_MAIL, 
             subject: 'Test'
         }
         failure{
             echo "Build Failed"
-            emailext body: "Build ${env.BUILD_DISPLAY_NAME} Failed", 
+            mail body: "Build ${env.BUILD_DISPLAY_NAME} Failed", 
             to: env.DEV_TEAM_MAIL, 
             subject: 'Test'
         }
