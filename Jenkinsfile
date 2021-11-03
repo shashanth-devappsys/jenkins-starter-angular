@@ -57,22 +57,17 @@ pipeline {
             }
         }
     }
-    post {
-
-        def buildStatus = ""
-        
+    post {      
         success {
-            buildStatus = "Success"
-        }
-
-        error {
-            buildStatus = "Failed"
-        }
-
-        always {
-            mail body: "${env.JOB_NAME} - Build # ${env.$BUILD_NUMBER} - ${buildStatus} <br>Check console output at ${env.BUILD_URL} to view the results.",
+            mail body: "${env.JOB_NAME} - Build #${env.$BUILD_NUMBER} - Success! <br>Check console output at ${env.BUILD_URL} to view the results.",
             to: env.DEV_TEAM_MAIL,
-            subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${buildStatus}!" 
+            subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - Success!" 
+        }
+
+        failure {
+            mail body: "${env.JOB_NAME} - Build #${env.$BUILD_NUMBER} - Failed! <br>Check console output at ${env.BUILD_URL} to view the results.",
+            to: env.DEV_TEAM_MAIL,
+            subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - Failed!" 
         }
     }
 }
