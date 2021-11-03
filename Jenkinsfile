@@ -58,17 +58,11 @@ pipeline {
         }
     }
     post {
-        success{
-            echo "Build Success"
-            mail body: "Build ${env.BUILD_DISPLAY_NAME} Successful", 
-            to: env.DEV_TEAM_MAIL, 
-            subject: 'Test'
-        }
-        failure{
-            echo "Build Failed"
-            mail body: "Build ${env.BUILD_DISPLAY_NAME} Failed", 
-            to: env.DEV_TEAM_MAIL, 
-            subject: 'Test'
+        always {
+            mail 
+            body: "${env.PROJECT_NAME} - Build # ${env.$BUILD_NUMBER} - ${env.BUILD_STATUS} <br>Check console output at ${env.BUILD_URL} to view the results.",
+            to: env.DEV_TEAM_MAIL,
+            subject: "${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}!" 
         }
     }
 }
